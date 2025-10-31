@@ -1,10 +1,18 @@
 import express from "express";
+import cors from "cors";
 import { sequelize } from "./models"; // import from index.ts
 import bookingRoutes from "./routes/bookingRoutes";
 import promoRoutes from "./routes/promoRoutes";
 import experienceRoutes from "./routes/experienceRoutes";
 
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173", // your Vite frontend
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Routes
